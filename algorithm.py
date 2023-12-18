@@ -4,13 +4,6 @@ from objective import objective_function_softImpute, objective_function_ALS, obj
 
 
 def ALS(X_original, A0, B0, lambda_, max_iter=500, tol=1e-5):
-    '''
-    Solves a ridge regression problem using a closed form solution:
-
-        w_i = (X'X + lambda * I)^-1 X'y
-    
-    for all i in the target matrix.
-    '''
     start_time = time.time()
     localtime = []
     objective = []
@@ -161,17 +154,3 @@ def softImputeALS_second(X, lambda_, r, max_iter=500, tol=1e-5):
 
     return U[:, :r], V[:, :r], np.diag(D_diag[:r]), localtime, objective
 
-
-# Example usage
-# X is a matrix with missing values (NaN)
-# clf = SoftImpute(J=2, lambda_=0.1)
-# fit = clf.fit(X)
-# X_imp = clf.predict(X)
-
-
-# Usage example
-# X is the input data matrix with missing values filled with zeros or mean
-# lambda_ is the regularization parameter
-# r is the rank restriction
-# Replace X, lambda_, and r with actual values
-# U, D_sigma_lambda = softImpute_ALS(X, lambda_, r)
